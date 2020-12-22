@@ -1,0 +1,7 @@
+{
+  "name": "tendagoo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
