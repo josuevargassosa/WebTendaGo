@@ -1,0 +1,43 @@
+<div>
+  <ion-row style="background-color: rgb(228, 228, 228);">
+    <ion-buttons>
+      <ion-button color="dark" (click)="home()" style="margin-left: 4%;">
+        <ion-icon name="arrow-back"></ion-icon>
+        <ion-label class="ion-text-capitalize" style="margin-left: 2%; font-size: medium;">Todos</ion-label>
+      </ion-button>
+    </ion-buttons>
+  </ion-row>
+  <ion-grid>
+    <ion-row>
+      <!-- <h5 style="width: 100%; margin-left: 0.8%; font-weight: bold; text-transform: uppercase;">{{divisionC}}</h5> -->
+    </ion-row>
+    <ion-row>
+      <ion-col class="colPrincipal" size-xs="12" size-sm="6" size-md="4" size-lg="4" size-xl="3" *ngFor="let item of divisionC | paginate: { itemsPerPage: 15, currentPage: pageActual }">
+          <ion-row style="width: 100%;">
+            <ion-col style="height: 100%;" (click)="verProducto(item.Id)">
+              <div style="height: 100%; width: 100%;">
+                <!-- <img *ngIf="!item.PhotoUrl" style="display: block; margin:auto;" src="../../../assets/images/"> -->
+                <div [style.backgroundImage]="'url('+item.PhotoUrl+')'" class="product_img"></div>
+                <!-- <img *ngIf="item.PhotoUrl" class="img" src="{{item.PhotoUrl}}"> -->
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row style="height: auto">
+            <ion-row style="width: 100%;">
+              <ion-col>
+                <h6>{{item.Producto}}</h6>
+              </ion-col>
+            </ion-row>
+            <ion-row style="width: 100%;">
+              <ion-col>
+                <p>{{item.Costo}}</p>
+              </ion-col>
+            </ion-row>
+          </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row style="width: 100%;">
+      <pagination-controls style="background-color: rgb(228, 228, 228); width:100%;" maxSize="9" responsive="true" (pageChange)="pageActual = $event"></pagination-controls>
+    </ion-row>
+  </ion-grid>
+<div>

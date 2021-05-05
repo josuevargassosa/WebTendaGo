@@ -1,0 +1,98 @@
+
+<!-- Interfaz Web -->
+<div>
+  <ion-grid>
+    <ion-row *ngIf="plataforma == 'web'">
+      <ion-buttons>
+        <ion-button (click)="regresarInicio()">Regresar</ion-button>
+        <ion-icon name="chevron-forward"></ion-icon>
+        <ion-button (click)="regresarDivison()">{{dataProducto.Division}}</ion-button>
+        <ion-icon name="chevron-forward"></ion-icon>
+        <ion-button disabled>{{dataProducto.Producto}}</ion-button>
+      </ion-buttons>
+    </ion-row>
+    <ion-row *ngIf="plataforma == 'movil'">
+      <ion-buttons>
+        <ion-button (click)="regresarInicio()">Regresar</ion-button>
+        <ion-icon name="chevron-forward"></ion-icon>
+        <ion-button (click)="regresarDivison()">{{dataProducto.Division}}</ion-button>
+      </ion-buttons>
+
+      <!-- <ion-buttons>
+        <ion-button size="small" (click)="regresarInicio()">
+          <h6 style="margin: auto;width: 100%; font-size: small;">Regresar</h6>
+        </ion-button>
+        <ion-icon name="chevron-forward"></ion-icon>
+        <ion-button size="small" (click)="regresarDivison()">
+          <h6 style="margin: auto;vertical-align: middle;width: 100%; font-size: small; text-transform: lowercase;">{{dataProducto.Division}}</h6>
+        </ion-button>
+      </ion-buttons> -->
+      <ion-col size="12">
+        <h6 style="width: 100%;margin-top: 0%;top: auto; font-size: small;">{{dataProducto.Producto}}</h6>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-xs="12" size-sm="12" size-md="6" size-lg="6">
+        <ion-row>
+          <div style="border: 0.3px solid lightgray " [style.backgroundImage]="'url('+dataProducto.PhotoUrl+')'" class="product_img"></div>
+          <!-- <img style="background-color: darkgrey; height: 500px; width: 100%;"> -->
+        </ion-row>
+        <ion-row style="margin-top: 1%;">
+          <ion-col size="3">
+            <img style="height: 100px; width: 150px;background-color: darkgrey; border: 0.3px solid lightgray ;" src="{{dataProducto.PhotoUrl}}">
+          </ion-col>
+          <ion-col size="3">
+            <img style="height: 100px; width: 150px;background-color: darkgrey; border: 0.3px solid lightgray " src="{{dataProducto.PhotoUrl}}">
+          </ion-col>
+          <ion-col size="4"></ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col size-xs="12" size-sm="12" size-md="6">
+        <ion-row>
+          <h2 *ngIf="plataforma=='web'" style="font-size: xx-large; height: 50%;margin-top: auto;">{{dataProducto.Producto}}</h2>
+          <h2 *ngIf="plataforma=='movil'"  style="font-size: x-large; height: 50%;margin-top: auto; width: 80%;">{{dataProducto.Producto}}</h2>
+        </ion-row>
+        <ion-row>
+          <p style="border-bottom-style: solid; width: auto ;border-bottom-color: darkgray; border-bottom-width: 0.5px;">
+            {{dataProducto.Descripcion}}
+          </p>
+        </ion-row>
+        <ion-row>
+          <p>Availability: </p><p style="color: rgb(24, 146, 24);">In Stock</p>
+        </ion-row>
+        <ion-row>
+          <h1>
+            ${{dataProducto.Costo}}
+          </h1>
+        </ion-row>
+        <ion-row>
+          <!-- Colores -->
+        </ion-row>
+        <ion-row size="12">
+          <ion-col size-xs="6" size-sm="6" size-md="4">
+            <div class="input-group" style="height: 100% !important;">
+
+              <span class="input-group-btn" style="height: 100% !important; margin: auto;">
+                <button type="button" class="btn btn-default btn-number btn-lg" data-type="minus" data-field="quant[2]" (click)="onDecrement()">
+                  <span class="glyphicon glyphicon-minus"></span>
+                </button>
+              </span>
+                
+              <input value="{{counter}}" style="height: 100% !important; margin: auto;" type="text" name="quant[2]" class="form-control input-number input-md quantity-style" value="0" min="0" max="15">
+          
+              <span class="input-group-btn" style="height: 100% !important; margin: auto;">
+                <button type="button" class="btn btn-default btn-number btn-lg" data-type="plus" data-field="quant[2]" (click)="onIncrement()">
+                  <span class="glyphicon glyphicon-plus"></span>
+                </button>
+              </span>
+    
+            </div>
+          </ion-col>
+          <ion-col size-xs="6" size-sm="6" size-md="8">
+            <ion-button expand="block" style="height: 100%; margin: auto;" (click)="AgregarCarrito()">Agregar</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>

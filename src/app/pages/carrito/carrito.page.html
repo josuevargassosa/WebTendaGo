@@ -1,0 +1,209 @@
+<ion-header>
+  <app-header-page (close)='home()'></app-header-page>
+ </ion-header>
+ 
+ <ion-content>
+ 
+ <!-- Interfaz Web -->
+ <div class="interfazWeb">
+   <ion-grid>
+     <ion-row>
+       <ion-buttons>
+         <ion-button (click)='home()'>Regresar</ion-button>
+         <ion-icon name="chevron-forward"></ion-icon>
+         <ion-button disabled>Carrito</ion-button>
+       </ion-buttons>
+     </ion-row>
+     <ion-row>
+       <ion-col>
+         <ion-text style="font-size: xx-large; font-weight: bold;">Carrito</ion-text>
+       </ion-col>
+     </ion-row>
+     <ion-row>
+       <ion-card *ngIf="plataforma == 'web'" style="width: 100%;">
+         <!-- Detalle de compra WEB -->
+         <ion-card-header style="background-color: rgb(233, 233, 233);">
+           <ion-row style="height: 100%;">
+             <ion-col size="1">
+               <ion-label style="color: black; font-weight: bold;">Imagen</ion-label>
+             </ion-col>
+             <ion-col size="5">
+               <ion-label style="color: black; font-weight: bold;">Producto</ion-label>
+             </ion-col>
+             <ion-col size="2">
+               <ion-label style="color: black; font-weight: bold;">Precio</ion-label>
+             </ion-col>
+             <ion-col size="2">
+               <ion-label style="color: black; font-weight: bold;">Cantidad</ion-label>
+             </ion-col>
+             <ion-col size="1">
+               <ion-label style="color: black; font-weight: bold;">Total</ion-label>
+             </ion-col>
+             <ion-col size="1">
+             </ion-col>
+           </ion-row>
+         </ion-card-header>
+         <ion-card-content>
+          <ion-row *ngFor="let item of dataCarrito"  style="height: 100%; margin-top: 1%; width: 100%;">
+            <ion-col size="1">
+              <div [style.backgroundImage]="'url('+item.producto.PhotoUrl+')'" class="imgproduct"></div>
+              <!-- <img style="background-color: darkgrey; width: 50px; height: 50px;"> -->
+            </ion-col>
+            <ion-col size="5">
+              <h6>{{item.producto.Producto}}</h6>
+            </ion-col>
+            <ion-col size="2">
+              <h6>{{item.producto.Costo}}</h6>
+            </ion-col>
+            <ion-col size="2">
+              <h6 style="width: 100%; text-align: lef; padding-left: 10%;">{{item.cantidad}}</h6>
+            </ion-col>
+            <ion-col size="1">
+              <h6>${{item.producto.Costo * item.cantidad}}</h6>
+            </ion-col>
+            <ion-col size="1">
+                <ion-buttons>
+                  <ion-button (click)="quitarProducto(item)" slot="end">
+                    <ion-icon name="close" color="danger"></ion-icon>
+                  </ion-button>
+                </ion-buttons>
+            </ion-col>
+          </ion-row>
+         </ion-card-content>
+       </ion-card>
+
+      <!-- Detalle de compra MOVIL -->
+      <div *ngIf="plataforma == 'movil'">
+        <ion-card  *ngFor="let item of dataCarrito">
+          <ion-row style="background-color: rgb(146, 146, 146); width: 100%;">
+            <ion-buttons slot="end">
+              <ion-button>
+                <ion-icon color="primary" name="close"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-row>
+          <ion-row style="width: 100%;" style="padding: 10px;">
+            <ion-col>
+                <ion-row>
+                  <div [style.backgroundImage]="'url('+item.producto.PhotoUrl+')'" class="imgresponsive"></div>
+                </ion-row>
+                <ion-row>
+                  <h6 style="color: black; margin: auto;height: 100%; text-align: center;">{{item.producto.Producto}}</h6>
+                </ion-row>
+                 <ion-row style="border-top: 1px solid gray; margin-top: 4%;">
+                   <ion-col size="4">
+                   </ion-col>
+                   <ion-col size="8">
+                     <ion-row>
+                       <ion-col>
+                         <h6 style="text-align: start; font-weight: bold; width: 100%; color: black;">Precio:</h6>
+                       </ion-col>
+                       <ion-col>
+                         <h6 style="text-align: end; width: 100%;color: black;">{{item.producto.Costo.toFixed(1)}}</h6>
+                       </ion-col>
+                     </ion-row>
+                     <ion-row>
+                       <ion-col>
+                         <h6 style="text-align: start; font-weight: bold; width: 100%;  color: black;">Cantidad:</h6>
+                       </ion-col>
+                       <ion-col>
+                         <h6 style="text-align: end; width: 100%;color: black;">5</h6>
+                       </ion-col>
+                     </ion-row>
+                     <ion-row>
+                       <ion-col>
+                         <h6 style="text-align: start; font-weight: bold; width: 100%;  color: black;">Total:</h6>
+                       </ion-col>
+                       <ion-col>
+                         <h6 style="text-align: end; width: 100%;color: black;">${{item.producto.Costo.toFixed(2) * item.cantidad}}</h6>
+                       </ion-col>
+                     </ion-row>
+                   </ion-col>
+                 </ion-row>
+              </ion-col>
+          </ion-row>
+        </ion-card>
+      </div>
+
+     </ion-row>
+     <ion-row>
+       <ion-col size-md="6" size-xs="12">
+         <ion-row>
+           <ion-col size-md="9" size-xs="7">
+             <input style="width: 100%; height: 100%;" placeholder="Aplicar cupon">
+           </ion-col>
+           <ion-col size-md="3" size-xs="5">
+             <ion-button color="primary">
+               <ion-label>Aplicar Cupon</ion-label>
+             </ion-button>
+           </ion-col>
+         </ion-row>
+       </ion-col>
+       <ion-col *ngIf="plataforma == 'web'"  size="6">
+         
+       </ion-col>
+     </ion-row>
+     <ion-row>
+       <ion-col *ngIf="plataforma == 'web'" size="7"></ion-col>
+       <ion-col size-sm="12" size-md="5" size-lg="5">
+         <ion-card>
+           <ion-card-header>
+             <ion-card-title>
+               <ion-item lines="none">
+                 <h6 style="font-size: xx-large;">
+                   Cart Totals
+                 </h6>
+               </ion-item>
+             </ion-card-title>
+           </ion-card-header>
+           <ion-card-content>
+             <ion-list>
+               <ion-item>
+                 <h6 style="text-align: start;font-weight: bold;width: 100%;">Subtotal</h6>
+                 <h6 style="text-align: end; width: 100%;">$1,768.00</h6>
+                 <!-- <ion-row size="12" style="background-color: aqua; width: 100%;">
+                   <ion-col size="8">
+                     <h6 style="font-weight: bold;">Subtotal</h6>
+                   </ion-col>
+                   <ion-col size="4">
+                     <h6 style="text-align: right;">
+                       $1,768.00
+                     </h6>
+                   </ion-col>
+                 </ion-row> -->
+               </ion-item>
+               <ion-item lines="none">
+                 <h6 style="text-align: start;font-weight: bold;width: 100%;">Envio</h6>
+                 <h6 style="text-align: end; width: 100%;">$50.00</h6>
+               </ion-item>
+               <ion-item>
+                 <h6 style="text-align: start;font-weight: bold;width: 100%;">IVA</h6>
+                 <h6 style="text-align: end; width: 100%;">$100.00</h6>
+               </ion-item>
+               <ion-item lines="none">
+                 <h6 style="text-align: start;font-weight: bold;width: 100%;font-size: x-large;">Total</h6>
+                 <h6 style="text-align: end; width: 100%; font-size: x-large;">$1250.00</h6>
+               </ion-item>
+               <ion-item lines="none">
+                 <ion-button (click)="comprar()" *ngIf="!dataUser"  style="width: 100%;" expand="full" size="large" [routerLink]="['/perfil', 'login']">
+                   <h6 style="font-size: medium; width: 90%; text-transform: capitalize;">
+                     Proceder al checkout
+                   </h6>
+                 </ion-button>
+                 <ion-button (click)="comprar()" *ngIf="dataUser" style="width: 100%;" expand="full" size="large" [routerLink]="['/perfil', 'perfil']">
+                  <h6 style="font-size: medium; width: 90%; text-transform: capitalize;">
+                    Proceder al checkout
+                  </h6>
+                </ion-button>
+               </ion-item>
+             </ion-list>
+           </ion-card-content>
+         </ion-card>
+       </ion-col>
+     </ion-row>
+   </ion-grid>
+ </div>
+ 
+ 
+ </ion-content>
+ 

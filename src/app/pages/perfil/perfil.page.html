@@ -1,0 +1,145 @@
+<ion-header>
+  <app-header-page (close)='home()'></app-header-page>
+</ion-header>
+
+<ion-content>
+
+  <div class="interfazWeb">
+    <ion-grid *ngIf="seccion == 'perfil'">
+
+      <ion-row>
+        <ion-buttons>
+          <ion-button [routerLink]="['/inicio', 'inicio']">Inicio</ion-button>
+          <ion-icon name="chevron-forward"></ion-icon>
+          <ion-button>Mi Cuenta</ion-button>
+        </ion-buttons>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-text style="font-size: xx-large; font-weight: bold;">Mi Cuenta</ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <!-- Tabla de segmentos Web-->
+        <ion-col size="3" *ngIf="this.plataforma == 'web'">
+          <ion-row>
+            <ion-col>
+              <div style="border: 1px solid lightgray; height: 100%; width: 100%;">
+                <ion-segment [(ngModel)]="publisherEstado" (ionChange)="segmentChanged2($event)" mode="md" style="display: block;">
+                  <ion-segment-button value="{{item.value}}" size="small" *ngFor="let item of perfilSecciones" class="segmentosPerfil">
+                    <h6 style="font-size: 90%; text-transform: capitaliza; text-align: left; width: 100%;">{{item.nombre}}</h6>
+                  </ion-segment-button>
+                </ion-segment>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        
+        <!-- Tabla de segmentos Movil-->
+        <ion-col size-xs="12" *ngIf="this.plataforma == 'movil'">
+          <ion-row>
+            <ion-col>
+              <ion-segment [(ngModel)]="publisherEstado" (ionChange)="segmentChanged2($event)" scrollable mode="md">
+                <ion-segment-button value="{{item.value}}" size="small" *ngFor="let item of perfilSecciones" class="segmentosPerfil">
+                  <h6 style="font-size: 90%; text-transform: capitalize;">{{item.nombre}}</h6>
+                </ion-segment-button>
+              </ion-segment>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+
+        <!-- Tabla de contenido Dashboard-->
+        <ion-col size-xs="12" size-md="9" style="height: 100%;" *ngIf="publisherEstado == 'Dashboard'" >
+          <ion-row>
+            <ion-col size-xs="12" size-md="6">
+              <div style="border: 1px solid lightgray; height: 100%; align-items: center; display: flex;justify-content: center;">
+                <div style="width: 80%; padding: 10%;">
+                  <ion-avatar class="ion-avatarWeb">
+                    <img align="center" src="https://tendago.binasystem.com/Images/TendaGO-horizontal.png"> 
+                  </ion-avatar>
+                  <p style="text-align: center;font-size: 100%; margin-top: 2px;"><strong>{{dataUser.nombre}}</strong><br>{{dataUser.correo}}</p>
+                  <ion-button align="center" size="small" style="display: flex;" fill="outline">
+                    <h6 style="text-align: center; height: 100%; font-size: medium;">Editar Perfil</h6>
+                  </ion-button>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div style="border: 1px solid lightgray; height: 100%;">
+                <div style="margin: 8%;">
+                  <ion-row>
+                    <h6 style="font-weight: bold;">Josue Vargas</h6><br>
+                  </ion-row>
+                  <ion-row>
+                    <p>Random Federation <br> 115302, Moscow <br> ul. Varshavskaya, 15-2-178</p>
+                  </ion-row>
+                  <ion-row>
+                    <p style="color: darkgrey; font-size: small;">Phone Number <br> <ion-text style="color: black;">0993959490</ion-text></p>
+                  </ion-row>
+                  <ion-row>
+                    <p style="color: darkgrey; font-size: small;">Email Address <br> <ion-text style="color: black;">josuevargass@hotmail.com</ion-text></p>
+                  </ion-row>
+                  <ion-row *ngIf="plataforma == 'movil'" >
+                    <a>Editar Direccion</a>
+                  </ion-row>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+          <!-- Ordenes Recientes -->
+          <ion-row>
+            <div style="border: 1px solid lightgray; height: 100%; width: 100%;overflow-x:auto;display: block;">
+              <table class="table" style="display: table;text-indent: initial;">
+                <caption>
+                  <h1 style="width: 100%;padding-left: 5%; color: black;">
+                    Ordenes Recientes
+                  </h1>
+                </caption>
+                <thead>
+                  <tr>
+                    <th class="datosTable" scope="col">ORDEN</th>
+                    <th class="datosTableDia"scope="col">DIA</th>
+                    <th class="datosTable"scope="col">ESTADO</th>
+                    <th class="datosTable"scope="col">TOTAL</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of [1,1,1]" >
+                    <td class="datosTable" scope="row"><a>#8132</a></td>
+                    <td class="datosTableDia">02 April, 2019</td>
+                    <td class="datosTable">Pending</td>
+                    <td class="datosTable">$374.00 for 3 item(s)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </ion-row>
+        </ion-col>
+
+        <!-- Seccion Editar Perfil -->
+        <ion-col *ngIf="publisherEstado == 'Editar Perfil'">
+          <ion-row >
+            <ion-col>
+              <ion-row style="border: 1px solid lightgray;width: 100%; padding: 2%;">
+                <h5>Editar Perfil</h5>
+              </ion-row>
+              <ion-row style="border: 1px solid lightgray;width: 100%; padding: 2%;">
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+    <app-login *ngIf="seccion == 'login'" ></app-login>
+
+  </div>
+
+</ion-content>

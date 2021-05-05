@@ -1,0 +1,25 @@
+
+.colPrincipal {
+    border-bottom: 0.5px;
+    border-bottom-style: solid;
+    border-bottom-color: lightgray;
+    // margin-bottom: 10%;
+}
+
+.product_img{
+    height: 250px;
+    width: 100%;
+    padding: 5px;
+    // border: 1px solid lightgray;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+// .img {
+//     display: table-cell;
+//     vertical-align: middle;
+//     margin: auto;
+//     display: block;
+// }

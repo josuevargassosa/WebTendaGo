@@ -1,3 +1,4 @@
+import { DataService } from './../services/data.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,6 +8,12 @@ import { Component } from '@angular/core';
 })
 export class TabsPage {
 
-  constructor() {}
+  plataforma = 'movil';
+
+  constructor(private data:DataService) {}
+
+  ngOnInit() {
+    this.plataforma =  this.data.getPlatform();
+  }
 
 }

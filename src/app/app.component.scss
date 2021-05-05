@@ -1,0 +1,44 @@
+.my-custom-menu-web{
+    --width: 400px;
+}
+
+.degradeazulnegro {
+    --background: rgb(0,0,0);
+    --background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(19,32,48,1) 82%);
+}
+
+.toolBar {
+    --background: #0F1925;
+}
+
+.itemSideMenu {
+    height: 100% !important;
+    --background: rgb(0,0,0);
+    --background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(19,32,48,1) 82%);
+    :hover {
+
+        // background-color: rgb(31, 49, 70);
+    }
+}
+
+.item-text {
+
+    // display: -webkit-box;
+    // display: -webkit-flex;
+    // display: -moz-box;
+    // display: -moz-flex;
+    // display: -ms-flexbox;
+    // display: flex;
+    // -webkit-box-align: center;
+    // -ms-flex-align: center;
+    // -webkit-align-items: center;
+    // -moz-align-items: center;
+    // align-items: center;
+    // position: absolute;
+    // top: 0;
+    // height: 100%;
+    color: white;
+    // width: 100%;
+}
+
+

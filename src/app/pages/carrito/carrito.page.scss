@@ -1,0 +1,151 @@
+.title{
+    font-size: 15px;
+    font-weight: bolder;
+    color: black;
+    padding: 0px 10px;   
+    margin-bottom: 10px;
+    // margin-top: 5%;
+    // background-color: aqua;
+}
+
+ion-label {
+    display: block;
+}
+
+.imgtendagoweb {
+    height: 60px;
+    width: 100%;
+    margin-bottom: 1px;
+    // padding: 5px;
+    // border: 1px solid lightgray;
+
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: contain;
+}
+
+.imgproduct {
+    height: 60px;
+    width: 100%;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.imgresponsive {
+    height: 150px;
+    width: 100%;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+
+.interfazWeb {
+
+    @media (max-width: 690px) {
+        margin-top: 1%;
+    } 
+    
+    @media (min-width: 691px) {
+        margin-top: 1%;
+        margin-right: 13%;
+        margin-left: 13%;
+    }
+
+
+}
+
+.product_img{
+    height: 500px;
+    width: 100%;
+    // padding: 5px;
+    // border: 1px solid lightgray;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.imgtendagomovil {
+    height: 40px;
+    width: 100%;
+    // padding: 5px;
+    // border: 1px solid lightgray;
+
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: contain;
+}
+
+ion-label {
+    size: 100%;
+    font-size: small !important;
+    // background-color: aqua;
+    width: 100%;
+    text-transform: capitalize;
+}
+
+.products_div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
+    border: 1px solid lightgray;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+
+    // ion-label {
+    //     display: block;
+    //     margin-bottom: 5px;
+    //     font-size: 13px;
+    // }
+    .line{
+        width: 20%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        height:2px;
+        background-color: gray;
+        display: flex;
+        justify-content: left;
+    }
+
+    .image_div{
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 150px;
+        width: 150px;
+        min-width: 150px;
+    }
+    .desc_div{
+        padding-left: 15px;
+        width: 100%;
+
+        .btn_div{
+            display: flex;
+            align-items: center;
+
+            ion-label {
+                margin-top: 10px;
+                font-size: 20px;
+                font-weight: 600;
+            }
+
+            ion-icon {
+                font-size: 30px;
+            }
+        }
+
+        .action_div{
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+        }
+    }
+}
+

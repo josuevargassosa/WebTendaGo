@@ -1,0 +1,241 @@
+
+
+
+.datosTable {
+    width: 100px;
+    padding: 12px;
+}
+
+.datosTableDia{
+    width: 150px;
+    padding: 12px;
+}
+
+
+$movil: 690;
+
+table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+
+
+
+.interfazWeb {
+
+    @media (max-width: 690px) {
+        margin-top: 1%;
+    } 
+    
+    @media (min-width: 691px) {
+        margin-top: 1%;
+        margin-right: 13%;
+        margin-left: 13%;
+    }
+
+
+}
+
+.segmentosPerfil {
+
+
+    --background-hover: red !important;
+}
+
+ion-segment-button {
+    &:hover {
+        --background: rgb(214, 224, 255);
+    }
+    &:checked {
+        color: black;
+    }
+}
+
+// .interfazWeb{
+//     margin-top: 1%;
+//     margin-right: 17%;
+//     margin-left: 17%;
+// }
+
+
+.imgtendagomovil {
+    height: 40px;
+    width: 100%;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+
+
+
+.imgtendagoweb {
+    height: 60px;
+    width: 100%;
+    margin-bottom: 1px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+
+.imgtendagomovil {
+    height: 40px;
+    width: 100%;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.ion-avatar{
+    border-radius: 100px;
+    width: 105px;
+    height: 100px;
+    margin: auto;
+}
+
+.ion-avatarWeb{
+    border-radius: 100px;
+    // width: 185px;
+    // height: 180px;
+    margin: auto;
+}
+
+
+ion-avatar img {
+    margin: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.buttonPerfil {
+    display: table-cell;
+    // vertical-align: middle;
+    margin: auto;
+    margin-top: 20%;
+    display: block;
+}
+
+.buttonPerfilWeb {
+    margin-top: 1%;
+}
+
+.titulopedidos {
+    color: rgb(59, 59, 255);
+    font-size: medium;
+    &:hover {
+        cursor: pointer;
+        color: #F47721;
+        text-decoration: underline;
+    }
+}
+
+.preciopedido {
+    color: rgb(151, 3, 3);
+    width: 100%;
+}
+
+////////////////
+
+
+
+
+body{
+    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+}
+.emp-profile{
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #fff;
+}
+.profile-img{
+    text-align: center;
+}
+.profile-img img{
+    width: 70%;
+    height: 100%;
+}
+.profile-img .file {
+    position: relative;
+    overflow: hidden;
+    margin-top: -20%;
+    width: 70%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #212529b8;
+}
+.profile-img .file input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+.profile-head h5{
+    color: #333;
+}
+.profile-head h6{
+    color: #0062cc;
+}
+.profile-edit-btn{
+    border: none;
+    border-radius: 1.5rem;
+    width: 70%;
+    padding: 2%;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+}
+.proile-rating{
+    font-size: 12px;
+    color: #818182;
+    margin-top: 5%;
+}
+.proile-rating span{
+    color: #495057;
+    font-size: 15px;
+    font-weight: 600;
+}
+.profile-head .nav-tabs{
+    margin-bottom:5%;
+}
+.profile-head .nav-tabs .nav-link{
+    font-weight:600;
+    border: none;
+}
+.profile-head .nav-tabs .nav-link.active{
+    border: none;
+    border-bottom:2px solid #0062cc;
+}
+.profile-work{
+    padding: 14%;
+    margin-top: -15%;
+}
+.profile-work p{
+    font-size: 12px;
+    color: #818182;
+    font-weight: 600;
+    margin-top: 10%;
+}
+.profile-work a{
+    text-decoration: none;
+    color: #495057;
+    font-weight: 600;
+    font-size: 14px;
+}
+.profile-work ul{
+    list-style: none;
+}
+.profile-tab label{
+    font-weight: 600;
+}
+.profile-tab p{
+    font-weight: 600;
+    color: #0062cc;
+}

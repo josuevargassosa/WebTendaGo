@@ -1,0 +1,171 @@
+<ion-header>
+  <app-header-inicio (close)='regresarHome($event)' (busqueda)='busquedaInicio($event)' (resultados)='search($event)'></app-header-inicio>
+</ion-header>
+
+<ion-content>
+
+  <ion-segment (ionChange)="segmentChanged($event)" mode="md" scrollable class="segmento">
+    <ion-segment-button *ngFor="let item of segmentos2" value="{{item.Division}}" class="segmentobtn">
+      <ion-label text-capitalize>{{item.Division}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <app-inicio-component *ngIf="seccion == 'inicio'"  (detalleProd)='verDetalles($event)'></app-inicio-component>
+
+  <!-- Home Web -->
+  <div *ngIf="plataforma == 'web'" class="interfazWeb">
+      <!-- Lista de productos a buscar -->
+      <div *ngIf="seccion == 'busqueda'">
+        <div *ngIf="buscando"  >
+          <ion-grid>
+            <ion-row>
+              <ion-col class="ion-text-center">
+                <ion-spinner name="crescent"></ion-spinner>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+        <ion-grid>
+          <ion-row *ngFor="let item of productosLista" (click)="verDetalles(item.Id)">
+            <ion-col size="2">
+              <div [style.backgroundImage]="'url('+item.PhotoUrl+')'" class="product_img"></div>
+            </ion-col>
+            <ion-col size="8">
+              <ion-text style="height: 100%;" >
+                <h5 style="width:100%; color:rgb(0, 0, 0); font-size: larger;">{{item.Producto}}</h5>
+                <h5 style="width:100%; color: gray;font-size: larger;">{{item.Descripcion}}</h5>
+              </ion-text>
+            </ion-col>
+            <ion-col size="1">
+              <div style="height: 100% !important; margin: auto; vertical-align: middle; display: flex;">
+                <h5 style="margin: auto; vertical-align: middle;">${{item.Costo.toFixed(1)}}</h5>
+              </div>
+            </ion-col>
+            <ion-col size="1">
+              <ion-buttons style="height: 100%;" (click)="AgregarCarrito(item)">
+                <ion-button color="primary">
+                  <ion-icon name="cart"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+      <!-- Resultados de productos busqueda -->
+      <div *ngIf="seccion == 'resultados'">
+        <ion-row style="width: 100%;">
+          <h6 style="font-size: large; width: 100%; height: 100%;">Resultados</h6>
+        </ion-row>
+        <ion-grid fixed style="width: 100%;">
+          <ion-row>
+            <ion-col *ngFor="let item of productosLista | paginate: { itemsPerPage: 15, currentPage: pageActual }" 
+              style="width:100%;" size-xs="12" size-sm="6" size-md="6" size-lg="3" size-xl="2">
+                <ion-col (click)="verDetalles(item.Id)">
+                  <div [style.backgroundImage]="'url('+item.PhotoUrl+')'" class="product_img"></div>
+                </ion-col>
+                <ion-col >
+                  <p class="header_title">{{item.Producto}}</p>
+                  <p class="footer_title">${{item.Costo}}</p>
+                </ion-col>
+            </ion-col>
+          </ion-row>
+          <ion-row style="width: 100%;">
+            <pagination-controls style="background-color: rgb(228, 228, 228); width:100%;" maxSize="9" responsive="true" (pageChange)="pageActual = $event"></pagination-controls>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+      <!-- Componente divisiones -->
+      <div *ngIf="seccion == 'division'" >
+        <app-divisiones [divisionC]="divisionArreglo" (regresarInicio)='regresarInicioP($event)' (open)='verDetalles($event)'></app-divisiones>
+      </div>
+
+      <!-- Detalle del producto -->
+      <div *ngIf="seccion == 'detalle'" >
+        <app-producto [detalleProductoC]="detalleProductoP"  (close)='verDetalles($event)' (regresarInicioVar)='regresarInicio()' (regresarDivisionVar)='regresarDivision($event)'></app-producto>
+      </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <!-- Home Movil -->
+  <div *ngIf="plataforma == 'movil'">
+
+    <!-- Lista de productos a buscar -->
+      <div *ngIf="seccion == 'busqueda'">
+        <div *ngIf="buscando">
+          <ion-grid>
+            <ion-row>
+              <ion-col class="ion-text-center">
+                <ion-spinner name="crescent"></ion-spinner>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+        
+        <ion-grid>
+          <ion-row *ngFor="let item of productosLista" (click)="verDetalles(item.Id)">
+            <ion-col size="2">
+              <div [style.backgroundImage]="'url('+item.PhotoUrl+')'" class="product_img"></div>
+            </ion-col>
+            <ion-col size="7">
+              <ion-text style="height: 100%;">
+                <h6 style="width:100%; color:rgb(0, 0, 0); font-size: medium;">{{item.Producto}}</h6>
+                <h6 style="width:100%; color: gray;font-size: small;">{{item.Descripcion}}</h6>
+              </ion-text>
+            </ion-col>
+            <ion-col size="3">
+              <div style="height: 100% !important; margin: auto; vertical-align: middle;display: flex;">
+                <h6 style="margin: auto; vertical-align: middle;font-size: medium; text-align: right;width: 100%;">${{item.Costo.toFixed(1)}}</h6>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+  
+      <!-- Resultados lista de productos a buscar -->
+      <div *ngIf="seccion == 'resultados'">
+        <ion-row style="width: 100%;">
+          <h6 style="font-size: large; width: 100%; height: 100%;">Resultados</h6>
+        </ion-row>
+        <ion-grid fixed style="width: 100%;">
+          <ion-row>
+            <ion-col *ngFor="let item of productosLista | paginate: { itemsPerPage: 15, currentPage: pageActual }" 
+              style="width:100%;" size-xs="12" size-sm="6" size-md="6" size-lg="3" size-xl="2">
+                <ion-col [routerLink]="['/producto', item.Id]">
+                  <div [style.backgroundImage]="'url('+item.PhotoUrl+')'" class="product_img"></div>
+                </ion-col>
+                <ion-col >
+                  <p class="header_title">{{item.Producto}}</p>
+                  <p class="footer_title">${{item.Costo}}</p>
+                </ion-col>
+                <ion-card>
+                </ion-card>
+            </ion-col>
+          </ion-row>
+          <ion-row style="width: 100%;">
+            <pagination-controls style="background-color: rgb(228, 228, 228); width:100%;" maxSize="9" responsive="true" (pageChange)="pageActual = $event"></pagination-controls>
+          </ion-row>
+        </ion-grid>
+      </div>
+  
+      <!-- Componente divisiones -->
+      <div *ngIf="seccion == 'division'" >
+        <app-divisiones [divisionC]="divisionArreglo" (regresarInicio)='regresarInicioP($event)' (open)='verDetalles($event)'></app-divisiones>
+      </div>
+
+      <!-- Detalle del producto -->
+      <div *ngIf="seccion == 'detalle'" >
+        <app-producto [detalleProductoC]="detalleProductoP" (close)='verDetalles($event)' (regresarInicioVar)='regresarInicio()' (regresarDivisionVar)='regresarDivision($event)'></app-producto>
+      </div>
+  </div>
+
+</ion-content>

@@ -1,0 +1,65 @@
+
+
+<!-- Ion Toolbar Movil -->
+
+<ion-toolbar *ngIf="plataforma == 'movil'" class="toolBar">
+  <ion-buttons slot="start">
+    <ion-menu-button color="light"></ion-menu-button>
+  </ion-buttons>
+  <ion-title color="light" (click)="home2()">
+    <div [style.backgroundImage]="'url(https://tendago.binasystem.com/Images/TendaGO-horizontal.png)'" class="imgtendagomovil"></div>
+
+  </ion-title>
+
+  <ion-buttons slot="end">
+    <ion-button size="large" (click)="carrito()">
+      <ion-icon color="light" name="cart"></ion-icon>
+    </ion-button>
+    <ion-button size="large" (click)="perfil()">
+      <ion-icon color="light"  name="person" ></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+<ion-toolbar *ngIf="plataforma == 'movil'" class="toolBar">
+  <ion-searchbar  debounce="700" color="light" placeholder="Buscar Tenda Go!"
+  [value]="textoBuscar"  #producto (keyup.enter)="search(producto.value)" 
+  (ionChange)="buscar($event)"></ion-searchbar>
+</ion-toolbar>
+
+<!-- Ion Toolbar Web -->
+<ion-toolbar *ngIf="plataforma == 'web'"  style="width: 100%; margin: auto;--background: rgb(19,32,48); --background: linear-gradient(90deg, rgba(19,32,48,1) 15%, rgba(0,0,0,1) 100%);">
+
+  <div style="width: 72%; margin: auto;">
+    <ion-row>
+      <ion-col size="3">
+        <ion-title (click)="home2()">
+          <div [style.backgroundImage]="'url(https://tendago.binasystem.com/Images/TendaGO-horizontal.png)'" class="imgtendagoweb"></div>
+        </ion-title>
+      </ion-col>
+      <ion-col size="7.5">
+        <div style="height: 100%;margin: auto; position: relative; vertical-align: middle;">
+          <ion-searchbar style="width: 100%; height: 100%;" slot="end" debounce="700" color="light" placeholder="Buscar Tenda Go!"
+          [value]="textoBuscar"  #producto (keyup.enter)="search(producto.value)" 
+          (ionChange)="buscar($event)"></ion-searchbar>
+        </div>
+      </ion-col>
+      <ion-col size="1.5">
+        <div style="margin: auto; vertical-align: middle; display: flex; height: 100%;">
+          <ion-buttons slot="end">
+            <ion-button slot="end" size="large">
+              <ion-icon slot="end" color="light"  name="heart"></ion-icon>
+            </ion-button>
+            <ion-button slot="end" size="large" (click)="carrito()">
+              <ion-icon slot="end" color="light" name="cart"></ion-icon>
+            </ion-button>
+            <ion-button slot="end" size="large" (click)="perfil()">
+              <ion-icon slot="end" color="light"  name="person" ></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </div>
+      </ion-col>
+    </ion-row>
+
+  </div> 
+
+</ion-toolbar>

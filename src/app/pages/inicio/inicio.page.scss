@@ -1,0 +1,245 @@
+
+ion-header {
+    --background: rgb(244,119,33) !important;
+    --background: linear-gradient(90deg, rgba(244,119,33,1) 0%, rgba(252,179,56,1) 89%) !important;
+}
+
+.colorBar1 {
+    // --background:  #231F20;
+    --background: rgb(19, 32, 48)
+}
+
+.colorBar {
+    --background: rgb(244,119,33) !important;
+    --background: linear-gradient(90deg, rgba(244,119,33,1) 0%, rgba(252,179,56,1) 89%) !important;
+}
+
+.imgtendagoweb {
+    height: 70px;
+    width: 100%;
+    margin-bottom: 1px;
+    margin-right: 3%;
+    padding-right: 3%;
+
+
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: contain;
+}
+
+
+.divButtons {
+    width: 64%;
+    height: 100% !important;
+    margin: auto;
+
+}
+
+.interfazWeb {
+    margin-top: 1%;
+    margin-right: 13%;
+    margin-left: 13%;
+}
+
+.imgtendagomovil {
+    height: 40px;
+    width: 100%;
+
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: contain;
+}
+
+
+ion-title {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.segmento {
+    --background: rgb(244,119,33) !important;
+    --background: linear-gradient(90deg, rgba(244,119,33,1) 0%, rgba(252,179,56,1) 89%) !important;
+}
+
+.segmentobtn {
+    // --background: rgb(244,119,33) !important;
+    // --background: linear-gradient(90deg, rgba(244,119,33,1) 0%, rgba(252,179,56,1) 89%) !important;
+    color: #ffffff;
+    &:hover {
+        --color: #e7e7e7;
+        background-color: #fa8d45;
+    }
+}
+
+.segment::-webkit-scrollbar {
+    height: 10px !important;
+    display: block;
+    }
+
+    .segment::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+    -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+    border-radius: 5px;
+    }
+
+    .segment::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 3px var(--ion-color-primary);
+    box-shadow: inset 0 0 3px var(--ion-color-primary);
+}
+
+.main_slider{
+    width: 100%;
+    height: 200px;
+    position: relative;
+
+    .banner_slides{
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 200px;
+        width: 100%;
+    }
+    .overlay{
+        position: absolute;
+        left: 0;
+        right: 0;
+        padding: 2px;
+        bottom: 0;
+        min-height: 45px;
+
+        overflow: hidden;
+        background-image: linear-gradient(-230deg, rgba(76, 30, 30, 0.4), #28354c);
+        .name{
+            font-size: 10px;
+            text-align: right;
+            color: white;
+            margin: 2px;
+         }
+         .explore_btn{
+            margin: 2px;
+            font-size: 10px;
+            text-align: right;
+            color: white;
+        }
+    }
+    .leftArrow{
+        width: 20px;
+        position: absolute;
+        top: 50%;
+        z-index: 999;
+        left: 10px;
+    }
+    .rightArrow{
+        width: 20px;
+        position: absolute;
+        top: 50%;
+        z-index: 999;
+        right: 10px !important;
+    }
+}
+
+.main_slider2{
+    width: 100%;
+    height: 80px;
+    position: relative;
+
+    .banner_slides2{
+        background-position: top;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 80px;
+        width: 100%;
+    }
+    .overlay{
+        position: absolute;
+        left: 0;
+        right: 0;
+        padding: 2px;
+        bottom: 0;
+        min-height: 45px;
+        border-bottom: 1px solid transparent !important;
+        overflow: hidden;
+        background-image: linear-gradient(-230deg, rgba(76, 30, 30, 0.4), #28354c);
+        .name{
+            font-size: 10px;
+            text-align: right;
+            color: white;
+            margin: 2px;
+         }
+         .explore_btn{
+            margin: 2px;
+            font-size: 10px;
+            text-align: right;
+            color: white;
+        }
+    }
+    .leftArrow{
+        width: 20px;
+        position: absolute;
+        top: 50%;
+        z-index: 999;
+        left: 10px;
+    }
+    .rightArrow{
+        width: 20px;
+        position: absolute;
+        top: 50%;
+        z-index: 999;
+        right: 10px !important;
+    }
+}
+
+.boton {
+    color: darkcyan;
+    &:hover {
+        font-weight: bold;
+    }
+    // It can also be used to style the outer selector in a certain context, such
+    // as a body set to use a right-to-left language.
+    [dir=rtl] & {
+        margin-left: 0;
+        margin-right: 10px;
+    }
+}
+
+.product_img{
+    height: 100px;
+    width: 100%;
+    padding: 5px;
+
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    // background-attachment: ;
+}
+.header_title{
+    font-size: 90%;
+    font-weight: bold;
+    color: black;
+}
+.footer_title{
+    font-size: 80%;
+    color: gray;
+}
+
+
+#centrador{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    // background-color: red;
+}
+
+#imagen{
+    position: absolute;
+    width: 100px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
